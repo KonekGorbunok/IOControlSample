@@ -34,11 +34,11 @@
             this.disconnectButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.exchangeGroupBox = new System.Windows.Forms.GroupBox();
-            this.lbl0 = new System.Windows.Forms.Label();
-            this.lbl1 = new System.Windows.Forms.Label();
-            this.inputTextBox = new System.Windows.Forms.TextBox();
-            this.outputNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.sendButton = new System.Windows.Forms.Button();
+            this.outputNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.inputTextBox = new System.Windows.Forms.TextBox();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.lbl0 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.exchangeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.outputNumericUpDown)).BeginInit();
@@ -94,30 +94,15 @@
             this.exchangeGroupBox.TabStop = false;
             this.exchangeGroupBox.Text = "Обмен данными";
             // 
-            // lbl0
+            // sendButton
             // 
-            this.lbl0.AutoSize = true;
-            this.lbl0.Location = new System.Drawing.Point(7, 20);
-            this.lbl0.Name = "lbl0";
-            this.lbl0.Size = new System.Drawing.Size(83, 13);
-            this.lbl0.TabIndex = 0;
-            this.lbl0.Text = "Передаваемое";
-            // 
-            // lbl1
-            // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(7, 46);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(56, 13);
-            this.lbl1.TabIndex = 1;
-            this.lbl1.Text = "Принятое";
-            // 
-            // inputTextBox
-            // 
-            this.inputTextBox.Location = new System.Drawing.Point(104, 46);
-            this.inputTextBox.Name = "inputTextBox";
-            this.inputTextBox.Size = new System.Drawing.Size(100, 20);
-            this.inputTextBox.TabIndex = 3;
+            this.sendButton.Location = new System.Drawing.Point(10, 77);
+            this.sendButton.Name = "sendButton";
+            this.sendButton.Size = new System.Drawing.Size(194, 23);
+            this.sendButton.TabIndex = 5;
+            this.sendButton.Text = "Отправить";
+            this.sendButton.UseVisualStyleBackColor = true;
+            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
             // outputNumericUpDown
             // 
@@ -131,14 +116,30 @@
             this.outputNumericUpDown.Size = new System.Drawing.Size(100, 20);
             this.outputNumericUpDown.TabIndex = 4;
             // 
-            // sendButton
+            // inputTextBox
             // 
-            this.sendButton.Location = new System.Drawing.Point(10, 77);
-            this.sendButton.Name = "sendButton";
-            this.sendButton.Size = new System.Drawing.Size(194, 23);
-            this.sendButton.TabIndex = 5;
-            this.sendButton.Text = "Отправить";
-            this.sendButton.UseVisualStyleBackColor = true;
+            this.inputTextBox.Location = new System.Drawing.Point(104, 46);
+            this.inputTextBox.Name = "inputTextBox";
+            this.inputTextBox.Size = new System.Drawing.Size(100, 20);
+            this.inputTextBox.TabIndex = 3;
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Location = new System.Drawing.Point(7, 46);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(56, 13);
+            this.lbl1.TabIndex = 1;
+            this.lbl1.Text = "Принятое";
+            // 
+            // lbl0
+            // 
+            this.lbl0.AutoSize = true;
+            this.lbl0.Location = new System.Drawing.Point(7, 20);
+            this.lbl0.Name = "lbl0";
+            this.lbl0.Size = new System.Drawing.Size(83, 13);
+            this.lbl0.TabIndex = 0;
+            this.lbl0.Text = "Передаваемое";
             // 
             // IOControlSample
             // 
