@@ -20,6 +20,20 @@ namespace IOControlSample
             150,300,600,1200,2400,9600,57600,115200,256000 // Перечень некоторых стандартных скоростей.
         };
         private static int[] dataBitsList = { 8, 7, 6, 5 }; // Статическая функция для перечня количества преедаваемых бит.
+        private static ParityItem[] paritylist = new ParityItem[] { // Объявление и инициализация массива с вариантами чётности.
+            new ParityItem(Parity.None, "Не использовать"),
+            new ParityItem(Parity.Odd, "Нечётный"),
+            new ParityItem(Parity.Even, "Чётный"),
+            new ParityItem(Parity.Mark, "Всегда 1"),
+            new ParityItem(Parity.Space, "Всегда 0")
+        };
+
+        private static StopBitsItem[] stopBitsList = new StopBitsItem[] { // Объявление и инициализация массива с вариантами количества стоповых битов.
+         new StopBitsItem (StopBits.Two, "2"),
+         new StopBitsItem (StopBits.One, "1")
+        };
+
+
         /// <summary>
         /// Инициализзцаия формы и её содержимого.
         /// </summary>
@@ -27,19 +41,36 @@ namespace IOControlSample
         {
             InitializeComponent();
             UpdateUIState(); // Защита от дурака.
-
+              // Конфигурация порта.
             baudRateComboBox.DataSource = baudRateList; // Запись в комбобокс списка скоростей из функции static BindingList<int>.
             dataBitsComboBox.DataSource = dataBitsList; // Запись в комбобокс списка числа передаваемых бит из функции static int[] dataBitsList.
-
-            serialPort_RS232.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+            parityComboBox.DataSource = paritylist;     // Указание источника записи списка с битом проверки на чётность.
+            stopBitsComboBox.DataSource = stopBitsList; // Указание источника записи списка с количеством стоповых бит.
+            parityComboBox.ValueMember = "Value"; // Исопльзовать в качестве действительного значения свойство "Value" объекта списка.
+            parityComboBox.DisplayMember = "Caption"; // Исопльзовать в качестве действительного значения свойство "Caption" объекта списка.
+            stopBitsComboBox.ValueMember = "Value";
+            stopBitsComboBox.DisplayMember = "Caption";
+              // Запись принятых значений.
+            serialPort_RS232.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler); // Событие - полученые данных.
             serialPort_RS232.ErrorReceived += new SerialErrorReceivedEventHandler(ErrorReceivedHandler);
         }
-
+        /// <summary>
+        /// Обработчик кнопки "Открыть".
+        /// </summary>
         private void connectButton_Click(object sender, EventArgs e)
         {
             try
             {
-                serialPort_RS232.Open();//Открытие порта.
+                //serialPort_RS232.PortName = portNameComboBox.Text;
+                //serialPort_RS232.BaudRate = int.Parse(baudRateComboBox.Text);
+                //serialPort_RS232.DataBits = (int)dataBitsComboBox.SelectedItem;
+                //serialPort_RS232.Parity = (Parity)parityComboBox.SelectedValue;
+                //serialPort_RS232.StopBits = (StopBits)stopBitsComboBox.SelectedValue;
+                serialPort_RS232.Open(); //Открытие порта.
+                connectButton.Enabled = false;
+                disconnectButton.Enabled = true;
+                exchangeGroupBox.Enabled = true;
+                settingsGroupBox.Enabled = false;
             }
             catch(SystemException exeption)
             {
@@ -62,7 +93,10 @@ namespace IOControlSample
             }
             UpdateUIState();
         }
-        public void ShowErrorDialog(string message) // Функция сообщения об ошибке.
+        /// <summary>
+        /// Вывод сообщения об ошибке.
+        /// </summary>
+        public void ShowErrorDialog(string message) 
         {
             MessageBox.Show(this, message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); // Сообщение об ошибке.
         }

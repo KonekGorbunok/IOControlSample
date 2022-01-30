@@ -10,7 +10,7 @@ namespace IOControlSample
     /// <summary>
     /// Класс для выбора количества стоповых битов.
     /// </summary>
-    public class StopBitsItem
+    public class StopBitsItem : IOControlSample
     {
         public StopBits Value { get; set; }
         public string Caption { get; set; }

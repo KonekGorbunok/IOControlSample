@@ -10,7 +10,7 @@ namespace IOControlSample
     /// <summary>
     /// Класс для бита проверки на чётность.
     /// </summary>
-    public class ParityItem
+    public class ParityItem : IOControlSample
     {
         public Parity Value { get; set; }
         public string Caption { get; set; }

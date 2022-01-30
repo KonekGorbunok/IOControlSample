@@ -174,21 +174,25 @@
             // 
             // stopBitsComboBox
             // 
+            this.stopBitsComboBox.DisplayMember = "Caption";
             this.stopBitsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.stopBitsComboBox.FormattingEnabled = true;
             this.stopBitsComboBox.Location = new System.Drawing.Point(126, 185);
             this.stopBitsComboBox.Name = "stopBitsComboBox";
             this.stopBitsComboBox.Size = new System.Drawing.Size(121, 21);
             this.stopBitsComboBox.TabIndex = 9;
+            this.stopBitsComboBox.ValueMember = "Value";
             // 
             // parityComboBox
             // 
+            this.parityComboBox.DisplayMember = "Caption";
             this.parityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.parityComboBox.FormattingEnabled = true;
             this.parityComboBox.Location = new System.Drawing.Point(126, 139);
             this.parityComboBox.Name = "parityComboBox";
             this.parityComboBox.Size = new System.Drawing.Size(121, 21);
             this.parityComboBox.TabIndex = 8;
+            this.parityComboBox.ValueMember = "Value";
             // 
             // dataBitsComboBox
             // 
